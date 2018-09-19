@@ -1,0 +1,100 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <ion-title>
+          E PUSH 
+        </ion-title>
+      </ion-col>
+      <ion-col col-8>
+        <div style="padding-top: 6px; transform: translateX(-30px);">Bienvenue {{identity.prenom}} {{identity.nom}}</div>
+      </ion-col>
+    </ion-row>
+    <div id="option">
+      <ion-row>
+        <ion-col>
+          <button ion-button block color="light" (click)='showIdentity()' uppercase>Mon identité</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block color="light" (click)='getParams()' uppercase>Mes appareil</button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="type">
+      <ion-row>
+        <ion-col>
+          <button ion-button block (click)='showAlert("accident")'>ACCIDENT</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block (click)='showAlert("agression")'>AGRESSION</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button block (click)='showAlert("allergie")'>ALLERGIE</button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block (click)='showAlert("terrorisme")'>TERRORISME</button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="descr">
+      <ion-row>
+        <ion-col>
+          <ion-label stacked>Nombre de blessé</ion-label>
+          <ion-input id="blesse" type="number" (change)='setBlesse($event)' [value]="blesse"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-label stacked>Nombre de victime</ion-label>
+          <ion-input id="victime" (change)='setVictime($event)' type="number" [value]="victime"></ion-input>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="adress">
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding>
+            <ion-label style="color: #999; font-weight: 500;">Adresse : </ion-label>
+            <ion-input [value]="adress"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="destinataires">
+      <ion-row>
+        <ion-col>
+          <ion-item style="color: #999; font-weight: 500;" no-padding>
+            Destinataire :
+            <ion-badge (click)='showAlert("proches")' color="secondary">+</ion-badge>
+            <ion-badge *ngFor="let destinataire of destinataires" (click)='removeDestinataire($event)' style="margin: 2px;">
+              {{destinataire}}
+            </ion-badge>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="previsualisation">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-textarea style="padding: 1em 0;" rows="6" [innerText]="text">
+            </ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="finish">
+      <ion-row>
+        <ion-col>
+          <button ion-button block (click)='sendSms()' uppercase>Prévenir Les urgences</button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
+
+

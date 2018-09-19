@@ -1,0 +1,227 @@
+page-home {
+  //colors
+  $color_emerald_approx: #55b879;
+  $white: #ffffff;
+  $color_celeste_approx: #d1d1d1;
+  $color_shakespeare_approx: #4ca9c8;
+  $color_astral_approx: #37859f;
+  $color_chateau_green_approx: #379f50;
+  $color_cape_cod_approx: #434343;
+
+  //@extend-elements
+  //original selectors
+  //input[type=radio]::before, #localisation input[type=checkbox]::before
+  %extend_1 {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background: $color_emerald_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 30px;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: translateX(-2px) translateY(-2px);
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.25s linear;
+  }
+
+  //original selectors
+  //input[type=radio]::after, #localisation input[type=checkbox]::after
+  %extend_2 {
+    content: '';
+    position: absolute;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: translateY(1px) translateX(30px);
+    width: 14px;
+    height: 14px;
+    background: $white;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 50%;
+    //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: all 0.25s linear;
+  }
+  .app {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .app-group {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 210px;
+  }
+  .app-radioBtn {
+    height: 25px;
+    margin: 15px 0;
+  }
+  fieldset {
+    width: 90%;
+    margin: 0 0 20px 0;
+  }
+  legend {
+    font-weight: bold;
+    padding: 0 10px;
+  }
+  label {
+    font-weight: bold;
+    font-size: 80%;
+    margin: 0 0 0 50px;
+  }
+  #localisation {
+    input[type=checkbox] {
+      cursor: pointer;
+      &:checked {
+        &:before {
+          content: '';
+          background: $color_celeste_approx;
+        }
+        &:after {
+          content: '';
+          //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+          transform: translateX(3px) translateY(1px);
+        }
+      }
+    }
+    input[type=checkbox]::before {
+      @extend %extend_1;
+    }
+    input[type=checkbox]::after {
+      @extend %extend_2;
+    }
+    input[type="text"] {
+      padding: 5px;
+      width: 100%;
+      margin: 0;
+      font-size: 0.9em;
+      text-align: center;
+      background: $color_emerald_approx;
+      color: $white;
+      border: none;
+      border-bottom: 5px solid $color_chateau_green_approx;
+    }
+    label {
+      margin: 0 0 0 35px;
+    }
+    input:hover {
+      background: $color_shakespeare_approx;
+      border: none;
+      border-bottom: 5px solid $color_astral_approx;
+    }
+  }
+  input[type=radio]::before {
+    @extend %extend_1;
+  }
+  input[type=radio]::after {
+    @extend %extend_2;
+  }
+  #services {
+    display: flex;
+    flex-flow: column nowrap;
+    width: calc(50% - 45px);
+    border-right: none;
+    label {
+      display: inline-block;
+      width: 75px;
+      margin: 0 0 0 40px;
+    }
+  }
+  #proches {
+    display: flex;
+    flex-flow: column nowrap;
+    width: calc(50% - 45px);
+    border-left: none;
+    label {
+      height: 20px;
+      margin: 20px 0 20px 15px;
+      //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+      transform: translateY(-10px);
+    }
+    input[type="checkbox"] {
+      background: $color_celeste_approx;
+      //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+      transform: translateY(5px) translateX(-15px);
+      height: 20px;
+      width: 20px;
+      &:checked::after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        background: $color_emerald_approx;
+      }
+    }
+  }
+  input[type="submit"] {
+    color: $white;
+    font-weight: bolder;
+    width: calc(100% - 40px);
+    padding: 10px 0;
+    margin: 0 0 10px 0;
+    background: $color_emerald_approx;
+    border: none;
+    border-bottom: 5px solid $color_chateau_green_approx;
+  }
+  #plus {
+    height: 120px;
+    .app-wrap {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-content: space-around;
+      list-style: none;
+      padding: 0;
+    }
+    a {
+      display: block;
+      width: 120px;
+      height: 100px;
+      text-decoration: none;
+      color: $color_cape_cod_approx;
+      i {
+        display: block;
+        text-align: center;
+        font-size: 40px;
+      }
+      span {
+        display: block;
+        text-align: center;
+        margin: 15px 0 0;
+        font-size: 70%;
+        font-weight: bold;
+      }
+    }
+  }
+  input[type="radio"] i {
+    cursor: pointer;
+  }
+  input[type=radio]:notchecked {
+    &:checked::before {
+      content: '';
+      background: $color_celeste_approx;
+    }
+    &:checked::after {
+      content: '';
+      //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+      transform: translateX(3px) translateY(1px);
+    }
+  }
+  #alerte input {
+    background: $color_shakespeare_approx;
+    color: $white;
+    width: 48%;
+    margin: 2px 0.5%;
+    font-weight: bolder;
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 5px solid $color_astral_approx;
+    &:hover {
+      background: $color_emerald_approx;
+      border: none;
+      border-bottom: 5px solid $color_chateau_green_approx;
+    }
+  }
+}
